@@ -1,7 +1,7 @@
 var enderecoContrato = "0xf21c2b51bA4ec1bEcB34434279c37EB49Bc74eE7";
 var provedor = new ethers.providers.Web3Provider(web3.currentProvider);
 ethereum.enable();
-var signatario = provedor.getSigner();
+var signatario = provedor.getSigner(); // serve para buscar a asssinatura, a partir de uma chave privada
 var contrato = new ethers.Contract(enderecoContrato, abiContrato, signatario);
 
 function registrarMudancaStatus() {
