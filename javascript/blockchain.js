@@ -46,7 +46,7 @@ function buscaStatusContrato() {
 }
 function encerrarContrato()
 {
-    var textoEncerrar = document.getElementById("frmEncerrar");
+    var textoEncerrar = document.getElementById("ncerrarContratoTx");
 
     textoEncerrar.innerHTML="conectando para encerramento de contrato ...";
     contrato.fimDoContrato()
@@ -77,7 +77,7 @@ function encerrarContrato()
 
 function buscaFimContrato() {
     var status;
-    var campoStatus = document.getElementById("encerrarCobntratoTx");     
+    var campoStatus = document.getElementById("encerrarContratoTx");     
     contrato.contratoAtivo()
     .then( (resultado) => 
     {
