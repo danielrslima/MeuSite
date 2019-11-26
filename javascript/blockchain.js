@@ -44,3 +44,47 @@ function buscaStatusContrato() {
         campoStatus.innerHTML = err;
     });
 }
+function encerrarContrato()
+{
+    var textoEncerrar = document.getElementById("frmEncerrar");
+
+    textoEncerrar.innerHTML="conectando para encerramento de contrato ...";
+    contrato.fimDoContrato()
+        .then( (trasacao)=>
+        {
+            console.log("encerrarContrato - Transacao", transacao);
+            textoEncerrar.innerHTML="encerrando o contrato ...";
+            transacao.wait()
+            .then((resultado)=>
+            {
+                buscaFimContrato();
+                textoEncerrar.innerHTML="contrato encerrado....";
+            })
+            .catch((err) =>
+            {
+                console.error("encerrarContrato - Aguardando tx ser minerada");
+                console.error(err);
+                textoEncerrar.innerHTML="erro ao se conectar minerar ....";
+            })
+        })
+        .catch((err)=>
+        {
+            console.error("encerrarContrato - Aguardando tx ser minerada");
+            console.error(err);
+            textoEncerrar.innerHTML="erro ao se conectar minerar ....";
+        })
+}
+
+function buscaFimContrato() {
+    var status;
+    var campoStatus = document.getElementById("encerrarCobntratoTx");     
+    contrato.contratoAtivo()
+    .then( (resultado) => 
+    {
+        campoStatus.innerHTML = resultado;
+    })
+    .catch( (err) => {
+        console.error(err);
+        campoStatus.innerHTML = err;
+    });
+}
